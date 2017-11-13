@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="SkyNetExoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="departement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="15" />
+          <Property Name="ville" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="employe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id_departement" Type="int" />
+          <Property Name="id_patron" Type="int" />
+          <Property Name="nom" Type="varchar" MaxLength="15" />
+          <Property Name="poste" Type="varchar" MaxLength="10" />
+          <Property Name="date_embauche" Type="date" />
+          <Property Name="salaire" Type="money" />
+          <Property Name="commission" Type="money" />
+        </EntityType>
+        <Association Name="fk_emp_dept">
+          <End Role="departement" Type="Self.departement" Multiplicity="0..1" />
+          <End Role="employe" Type="Self.employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employe">
+              <PropertyRef Name="id_departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_emp_patron">
+          <End Role="employe" Type="Self.employe" Multiplicity="0..1" />
+          <End Role="employe1" Type="Self.employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employe1">
+              <PropertyRef Name="id_patron" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SkyNetExoModelStoreContainer">
+          <EntitySet Name="departement" EntityType="Self.departement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employe" EntityType="Self.employe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_emp_dept" Association="Self.fk_emp_dept">
+            <End Role="departement" EntitySet="departement" />
+            <End Role="employe" EntitySet="employe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_emp_patron" Association="Self.fk_emp_patron">
+            <End Role="employe" EntitySet="employe" />
+            <End Role="employe1" EntitySet="employe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SkyNetExoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="departement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="ville" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="employe" Relationship="Self.fk_emp_dept" FromRole="departement" ToRole="employe" />
+        </EntityType>
+        <EntityType Name="employe">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id_departement" Type="Int32" />
+          <Property Name="id_patron" Type="Int32" />
+          <Property Name="nom" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="poste" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="date_embauche" Type="DateTime" Precision="0" />
+          <Property Name="salaire" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="commission" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="departement" Relationship="Self.fk_emp_dept" FromRole="employe" ToRole="departement" />
+          <NavigationProperty Name="employe1" Relationship="Self.fk_emp_patron" FromRole="employe" ToRole="employe1" />
+          <NavigationProperty Name="employe2" Relationship="Self.fk_emp_patron" FromRole="employe1" ToRole="employe" />
+        </EntityType>
+        <Association Name="fk_emp_dept">
+          <End Role="departement" Type="Self.departement" Multiplicity="0..1" />
+          <End Role="employe" Type="Self.employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="departement">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employe">
+              <PropertyRef Name="id_departement" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_emp_patron">
+          <End Role="employe" Type="Self.employe" Multiplicity="0..1" />
+          <End Role="employe1" Type="Self.employe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="employe">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="employe1">
+              <PropertyRef Name="id_patron" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SkyNetExoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="departement" EntityType="Self.departement" />
+          <EntitySet Name="employe" EntityType="Self.employe" />
+          <AssociationSet Name="fk_emp_dept" Association="Self.fk_emp_dept">
+            <End Role="departement" EntitySet="departement" />
+            <End Role="employe" EntitySet="employe" />
+          </AssociationSet>
+          <AssociationSet Name="fk_emp_patron" Association="Self.fk_emp_patron">
+            <End Role="employe" EntitySet="employe" />
+            <End Role="employe1" EntitySet="employe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SkyNetExoModelStoreContainer" CdmEntityContainer="SkyNetExoEntities">
+          <EntitySetMapping Name="departement">
+            <EntityTypeMapping TypeName="SkyNetExoModel.departement">
+              <MappingFragment StoreEntitySet="departement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="ville" ColumnName="ville" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employe">
+            <EntityTypeMapping TypeName="SkyNetExoModel.employe">
+              <MappingFragment StoreEntitySet="employe">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_departement" ColumnName="id_departement" />
+                <ScalarProperty Name="id_patron" ColumnName="id_patron" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="poste" ColumnName="poste" />
+                <ScalarProperty Name="date_embauche" ColumnName="date_embauche" />
+                <ScalarProperty Name="salaire" ColumnName="salaire" />
+                <ScalarProperty Name="commission" ColumnName="commission" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
