@@ -144,7 +144,7 @@ namespace ExcelAddInExpBD123.PRES {
             string nouveauNom = (string)ligneAModifier["nom"];
 
             // Si ID = 7934 alors le DataSet est modifié !!!
-            Console.WriteLine(ds.Tables["employe"].Rows[13]["nom"]);
+            //Console.WriteLine(ds.Tables["employe"].Rows[13]["nom"]);
 
             // ÉTAPE 3 - VALIDER LA MODIFICATION
             SqlCommandBuilder builder1 = new SqlCommandBuilder(adapteur);
