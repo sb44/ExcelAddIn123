@@ -107,8 +107,6 @@
                             <Grid DockPanel.Dock="Top" Height="25">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100"></ColumnDefinition>
-                                    <ColumnDefinition Width="100"></ColumnDefinition>
-                                    <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Label Grid.Column="0">Nom Colonnes</Label>
                                 <!--<Label Grid.Column="1">ID Département</Label>
@@ -129,7 +127,8 @@
                                 <ColumnDefinition Width="100" />-->
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="" />
+                            <TextBlock Grid.Column="0" Text="{Binding nomColonne}" />
+                            <!--<TextBlock Grid.Column="0" Text="" />-->
                             <!--<TextBlock Grid.Column="1" Text="{Binding id_departement}" />
                             <TextBlock Grid.Column="2" Text="{Binding nom}" />-->
                         </Grid>
@@ -161,11 +160,12 @@
                     <DataTemplate>
                         <Grid Margin="0,2">
                             <Grid.ColumnDefinitions>
-                                <!--<ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="100" />-->
+                                <ColumnDefinition Width="100" />
                                 <ColumnDefinition Width="*" />
+                                <!--<ColumnDefinition Width="*" />-->
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="" />
+                            <TextBlock Grid.Column="0" Text="{Binding id}" />
+                            <TextBlock Grid.Column="1" Text="{Binding nom}" />
                             <!--<TextBlock Grid.Column="1" Text="{Binding id_departement}" />
                             <TextBlock Grid.Column="2" Text="{Binding nom}" />-->
                         </Grid>
@@ -176,7 +176,7 @@
 
 
             <Label Content="ID - Employé" Grid.Column="2" Grid.Row="3" x:Name="lblIDEMP" Background="White" Grid.ColumnSpan="1" Margin="17,17,150,61" Foreground="#FF1E9BD9" FontSize="10" />
-            <TextBox x:Name="txtIDEmploye" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="2" Grid.Row="3" Margin="22,43,135,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66"/>
+            <TextBox x:Name="txtIDEmploye" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="2" Grid.Row="3" Margin="22,43,135,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66" IsEnabled="False"/>
 
             <Label Content="ID - Employé à supprimer" Grid.Column="2" Grid.Row="3" x:Name="lblIDEMPaSupprim" Background="White" Margin="168,17,155,61" Foreground="#FF1E9BD9" FontSize="10" Grid.ColumnSpan="2" />
             <TextBox x:Name="txtIDEmployeAsuppr" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="2" Grid.Row="3" Margin="167,43,160,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66" Grid.ColumnSpan="2"/>
