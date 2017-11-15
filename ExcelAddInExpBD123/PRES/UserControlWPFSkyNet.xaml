@@ -179,7 +179,7 @@
             <TextBox x:Name="txtIDEmploye" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="2" Grid.Row="3" Margin="22,43,135,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66" IsEnabled="False"/>
 
             <Label Content="ID - Employé à supprimer" Grid.Column="2" Grid.Row="3" x:Name="lblIDEMPaSupprim" Background="White" Margin="168,17,155,61" Foreground="#FF1E9BD9" FontSize="10" Grid.ColumnSpan="2" />
-            <TextBox x:Name="txtIDEmployeAsuppr" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="2" Grid.Row="3" Margin="167,43,160,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="txtIDEmployeAsuppr"  Template="{StaticResource TextBoxBaseControlTemplate}" IsEnabled="False" Width="125" Height="25" Grid.Column="2" Grid.Row="3" Margin="167,43,160,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66" Grid.ColumnSpan="2"/>
 
             <Label Content="ID - Employé à insérer" Grid.Column="3" Grid.Row="3" x:Name="lblIDEMPaInserer" Background="White" Margin="28,19,13,59" Foreground="#FF1E9BD9" FontSize="10" />
             <TextBox x:Name="txtIDEmployeAinserer" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="3" Grid.Row="3" Margin="28,43,17,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66"/>
