@@ -98,9 +98,9 @@
                 </Label.Style>
             </Label>
 
-            <Button x:Name="buttonAffEmployesDsList" Grid.Column="2" Grid.Row="2" Content="Afficher employés" HorizontalAlignment="Left" VerticalAlignment="Center" Width="145" Height="25" Click="buttonAffEmployesDsList_Click" Margin="82,6,0,99" Grid.RowSpan="2"/>
+            <Button x:Name="buttonAffColonnesTblEmploye" Grid.Column="1" Grid.Row="6" Content="SELECT" HorizontalAlignment="Left" VerticalAlignment="Center" Width="81" Height="24" Click="buttonAffColonnesTblEmploye_Click" Margin="10,11,0,69"/>
             <!-- <ListBox x:Name="listBoxEmployes" HorizontalAlignment="Left" Height="197" Grid.RowSpan="4" VerticalAlignment="Top" Width="538" Grid.Column="1"  Grid.Row="3" Margin="5,0,0,0" Grid.ColumnSpan="2" /> -->
-            <ListBox Name="listBoxEmployes" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Grid.RowSpan="3" Width="543" Grid.Column="1"  Grid.Row="3" Grid.ColumnSpan="2" Margin="0,17,0,0" SelectionChanged="listBoxEmployes_SelectionChanged">
+            <ListBox Name="listBoxNomColonnes" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Grid.RowSpan="3" Width="107" Grid.Column="1"  Grid.Row="3" Margin="0,17,0,0">
                 <ListBox.Template >
                     <ControlTemplate >
                         <DockPanel LastChildFill="True">
@@ -110,11 +110,11 @@
                                     <ColumnDefinition Width="100"></ColumnDefinition>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Label Grid.Column="0">ID Employé</Label>
-                                <Label Grid.Column="1">ID Département</Label>
-                                <Label Grid.Column="2">Nom employé</Label>
+                                <Label Grid.Column="0">Nom Colonnes</Label>
+                                <!--<Label Grid.Column="1">ID Département</Label>
+                                <Label Grid.Column="2">Nom employé</Label>-->
                             </Grid>
-                            <ScrollViewer x:Name="ScrollViewer" Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" >
+                            <ScrollViewer Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" >
                                 <ItemsPresenter />
                             </ScrollViewer>
 
@@ -125,46 +125,87 @@
                     <DataTemplate>
                         <Grid Margin="0,2">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="100" />
+                                <!--<ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />-->
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding id}" />
-                            <TextBlock Grid.Column="1" Text="{Binding id_departement}" />
-                            <TextBlock Grid.Column="2" Text="{Binding nom}" />
+                            <TextBlock Grid.Column="0" Text="" />
+                            <!--<TextBlock Grid.Column="1" Text="{Binding id_departement}" />
+                            <TextBlock Grid.Column="2" Text="{Binding nom}" />-->
                         </Grid>
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
 
-            <Label Content="ID Département  :" Grid.Column="3" Grid.Row="3" Height="21" x:Name="lblIDDEP" Background="White" Grid.ColumnSpan="1" Margin="5,14,50,69" Foreground="#FF1E9BD9" FontSize="10" />
+            <ListBox Name="listBoxEmployes" HorizontalContentAlignment="Stretch" HorizontalAlignment="Left" Grid.RowSpan="3" Width="189" Grid.Column="1"  Grid.Row="3" Margin="129,17,0,0" SelectionChanged="listBoxEmployes_SelectionChanged" Grid.ColumnSpan="2">
+                <ListBox.Template >
+                    <ControlTemplate >
+                        <DockPanel LastChildFill="True">
+                            <Grid DockPanel.Dock="Top" Height="25">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0">ID Employé</Label>
+                                <Label Grid.Column="1">Nom Employé</Label>
+                                <!--<Label Grid.Column="2">Nom employé</Label>-->
+                            </Grid>
+                            <ScrollViewer Padding="{TemplateBinding Padding}" Background="{TemplateBinding Background}" BorderBrush="Transparent" BorderThickness="0" >
+                                <ItemsPresenter />
+                            </ScrollViewer>
 
-            <Label Content="PROJET C# avec SQL Server 2012 - version 1" Background="#FFE0E0E0" Grid.Column="1" Grid.Row="1" x:Name="lblCalcDeRemb" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="7,0" FontSize="11.5" Foreground="#FF5C5C66" Grid.ColumnSpan="3" />
+                        </DockPanel>
+                    </ControlTemplate>
+                </ListBox.Template>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Grid Margin="0,2">
+                            <Grid.ColumnDefinitions>
+                                <!--<ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="100" />-->
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="" />
+                            <!--<TextBlock Grid.Column="1" Text="{Binding id_departement}" />
+                            <TextBlock Grid.Column="2" Text="{Binding nom}" />-->
+                        </Grid>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
 
-            <Rectangle HorizontalAlignment="Left" VerticalAlignment="Stretch" Grid.RowSpan="4" Width="40" Grid.Column="2" Grid.Row="2" Margin="242,0,0,0">
-                <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0,1" EndPoint="1,1">
-                        <GradientStop Color="#FFF1F1F1" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
 
-            <Label Content="" Grid.Column="1" Grid.Row="6" x:Name="lblMAJ" VerticalContentAlignment="Bottom" VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Grid.ColumnSpan="3" Background="White"  FontSize="13.5" Foreground="#FF5C5C66" Unloaded="lblMAJ_Unloaded" Loaded="lblMAJ_Loaded" Grid.RowSpan="2" />
-            <Button x:Name="buttonMAJDepartement" Grid.Column="3" Grid.Row="2" Content="Mettre à jour département" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="155" Height="25" Margin="10,0,0,100" Click="buttonMAJEmploye_Click" Grid.RowSpan="2"/>
-            <Label Content="Ville Département :" Grid.Column="3" Grid.Row="4" Height="21" x:Name="lblVilleDep" Background="White" Grid.ColumnSpan="1" Margin="5,31,50,52" Foreground="#FF1E9BD9" FontSize="10" />
-            <TextBox x:Name="txtVille" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Stretch" Height="25" Grid.Column="3" Grid.Row="4" Margin="5,52,5,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="auto" Text="" TextAlignment="Left" Foreground="#FF5C5C66"/>
-            <Label Content="Nom Département :" Grid.Column="3" Grid.Row="3" x:Name="lblNomDep" Background="White" Grid.ColumnSpan="1" Margin="5,73,50,1" Foreground="#FF1E9BD9" FontSize="10" />
-            <TextBox x:Name="txtNomDepartement" Template="{StaticResource TextBoxBaseControlTemplate}" HorizontalAlignment="Stretch" Height="25" Grid.Column="3" Grid.Row="3" Margin="5,94,5,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Width="auto" Text="" TextAlignment="Left" Foreground="#FF5C5C66" Grid.RowSpan="2"/>
-            <Label x:Name="lblIDdepSelectionne" Content="-" FontWeight="Bold" HorizontalAlignment="Left" Grid.Column="3" Grid.Row="3" VerticalAlignment="Top" Foreground="#FF009CE7" Margin="5,40,0,0" />
-            <Rectangle HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="543" Grid.Column="1" Grid.Row="6" Margin="0,0,0,63" Grid.ColumnSpan="2">
-                <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Color="#FFF1F1F1" Offset="0"/>
-                        <GradientStop Color="White" Offset="1"/>
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
+
+            <Label Content="ID - Employé" Grid.Column="2" Grid.Row="3" x:Name="lblIDEMP" Background="White" Grid.ColumnSpan="1" Margin="17,17,150,61" Foreground="#FF1E9BD9" FontSize="10" />
+            <TextBox x:Name="txtIDEmploye" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="2" Grid.Row="3" Margin="22,43,135,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66"/>
+
+            <Label Content="ID - Employé à supprimer" Grid.Column="2" Grid.Row="3" x:Name="lblIDEMPaSupprim" Background="White" Margin="168,17,155,61" Foreground="#FF1E9BD9" FontSize="10" Grid.ColumnSpan="2" />
+            <TextBox x:Name="txtIDEmployeAsuppr" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="2" Grid.Row="3" Margin="167,43,160,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66" Grid.ColumnSpan="2"/>
+
+            <Label Content="ID - Employé à insérer" Grid.Column="3" Grid.Row="3" x:Name="lblIDEMPaInserer" Background="White" Margin="28,19,13,59" Foreground="#FF1E9BD9" FontSize="10" />
+            <TextBox x:Name="txtIDEmployeAinserer" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="3" Grid.Row="3" Margin="28,43,17,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66"/>
+
+
+            <Label Content="ID - Département" Grid.Column="3" Grid.Row="4" x:Name="lblIDDepartement" Background="White" Margin="28,0,13,78" Foreground="#FF1E9BD9" FontSize="10" />
+            <TextBox x:Name="txtIDDepartement" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="3" Grid.Row="4" Margin="28,26,17,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66"/>
+
+            <Label Content="Nom - Employé à insérer" Grid.Column="3" Grid.Row="4" x:Name="lblNomEmpAinserer" Background="White" Margin="28,78,13,0" Foreground="#FF1E9BD9" FontSize="10" />
+            <TextBox x:Name="txtNomEmpAinserer" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="3" Grid.Row="5" Margin="28,0,17,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center" Text="" TextAlignment="Left" Foreground="#FF5C5C66"/>
+
+
+            <Label Content="PROJET C# avec SQL Server 2012 - version 2" Background="#FFE0E0E0" Grid.Column="1" Grid.Row="1" x:Name="lblCalcDeRemb" VerticalContentAlignment="Center" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Margin="7,0" FontSize="11.5" Foreground="#FF5C5C66" Grid.ColumnSpan="3" />
+
+            <Label Content="" Grid.Column="1" Grid.Row="6" x:Name="lblMAJ" VerticalContentAlignment="Bottom" VerticalAlignment="Center" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left" Grid.ColumnSpan="3" Background="White"  FontSize="13.5" Foreground="#FF5C5C66" Unloaded="lblMAJ_Unloaded" Loaded="lblMAJ_Loaded" Margin="0,66,10,10" />
+            <Button x:Name="buttonMAJEmp" Grid.Column="2" Grid.Row="5" Content="UPDATE" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="80" Height="25" Margin="42,0,0,10" Click="buttonMAJEmploye_Click"/>
+
+            <Button x:Name="buttonDELEmp" Grid.Column="2" Grid.Row="5" Content="DELETE" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="80" Height="25" Margin="182,0,0,9" Click="buttonDELEmp_Click"/>
+
+            <Button x:Name="buttonINSEmp" Grid.Column="3" Grid.Row="5" Content="INSERT" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="80" Height="25" Margin="28,0,0,10" Click="buttonINSEmp_Click"/>
+
+            <Label Content="Nom - Employé" Grid.Column="2" Grid.Row="4" x:Name="lblNomEmp" Background="White" Grid.ColumnSpan="1" Margin="17,78,150,100" Foreground="#FF1E9BD9" FontSize="10" Grid.RowSpan="2" />
+            <TextBox x:Name="txtNomEmploye" Template="{StaticResource TextBoxBaseControlTemplate}" Width="125" Height="25" Grid.Column="2" Grid.Row="5" Margin="22,0,135,0" TextWrapping="Wrap" VerticalAlignment="Top" VerticalContentAlignment="Center"  Text="" TextAlignment="Left" Foreground="#FF5C5C66" RenderTransformOrigin="0.133,0.64"/>
+
+
+
             <Label x:Name="lblTitreTabEmp" Content="TABLE EMPLOYÉ" FontWeight="Bold" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="2" VerticalAlignment="Top" Foreground="#FF009CE7" Margin="0,10,0,0" RenderTransformOrigin="0.6,1.077" Width="107" Grid.RowSpan="2" />
 
         </Grid>

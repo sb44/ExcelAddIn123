@@ -1,7 +1,6 @@
-﻿using ExcelAddInExpBD123.DAL;
+﻿
 using System;
 using System.Collections.Generic;
-using System.Data.Entity.Infrastructure;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -22,7 +21,7 @@ namespace ExcelAddInExpBD123.PRES {
     /// </summary>
     public partial class UserControlWPFSkyNet : UserControl {
 
-        private SkyNetExoEntities db = new SkyNetExoEntities();
+       // private SkyNetExoEntities db = new SkyNetExoEntities();
 
         // SqlConnection connexion;
         // string chaineDeConnexion = "Data Source=ServeurSQL;Initial Catalog = SkyNet;User Id = TEST;Password=AAAaaa111";
@@ -35,8 +34,11 @@ namespace ExcelAddInExpBD123.PRES {
 
             Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlWait;
 
-            var lstEmpl = db.employe.ToList();
+            /*
+           // var lstEmpl = db.employe.ToList();
             this.listBoxEmployes.ItemsSource = lstEmpl; // les champs affichés définis dans XAML
+            */
+
 
             Globals.ThisAddIn.Application.Cursor = Microsoft.Office.Interop.Excel.XlMousePointer.xlDefault;
 
@@ -53,7 +55,7 @@ namespace ExcelAddInExpBD123.PRES {
             //déconnecté la BD
             //      connexion.Close();
 
-            db = null;
+            //db = null;
         }
 
         private void lblMAJ_Loaded(object sender, RoutedEventArgs e) {
@@ -66,6 +68,7 @@ namespace ExcelAddInExpBD123.PRES {
         private void buttonMAJEmploye_Click(object sender, RoutedEventArgs e) {
             lblMAJ.Content = "";
 
+            /*
             // VALIDATION
             if (lblIDdepSelectionne.Content.ToString() == "" || lblIDdepSelectionne.Content.ToString() == "-") { // SI ID_DEPARTEMENT EST PRÉSENT
                 MessageBox.Show("Erreur. Le ID département n'existe pas.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
@@ -93,7 +96,11 @@ namespace ExcelAddInExpBD123.PRES {
             if (!int.TryParse(lblIDdepSelectionne.Content.ToString().Trim(), out idDep)) {
                 return;
             }
-            var dep = db.departement.Find(idDep);
+            */
+
+
+
+            /* var dep = db.departement.Find(idDep);
 
             // FIN VALIDATION
             try {
@@ -113,10 +120,11 @@ namespace ExcelAddInExpBD123.PRES {
 
                 lblMAJ.Content = "Erreur avec la BD. Contacter votre administrateur.";
             }
-
+            */
         }
 
         private void listBoxEmployes_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+            /*
             var buff = sender as ListBox;
             var sel = (employe)buff.SelectedItem;
 
@@ -124,6 +132,19 @@ namespace ExcelAddInExpBD123.PRES {
                 lblIDdepSelectionne.Content = (sel.id_departement > 0) ? sel.id_departement.ToString() : "";
             txtVille.Text = (sel.id_departement > 0) ? sel.departement.ville.ToString() : "";
             txtNomDepartement.Text = (sel.id_departement > 0) ? sel.departement.nom.ToString() : "";
+            */
+        }
+
+        private void buttonINSEmp_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void buttonDELEmp_Click(object sender, RoutedEventArgs e) {
+
+        }
+
+        private void buttonAffColonnesTblEmploye_Click(object sender, RoutedEventArgs e) {
+
         }
     }
 }

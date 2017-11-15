@@ -53,7 +53,7 @@ namespace ExcelAddInExpBD123 {
             int width = myUserControlFromFM.Width;
             int height = myUserControlFromFM.Height;
 
-            myCustomTaskPaneSkyNet = this.CustomTaskPanes.Add(myUserControlFromFM, "SkyNet - Employés et départements");
+            myCustomTaskPaneSkyNet = this.CustomTaskPanes.Add(myUserControlFromFM, "ADO.NET en mode déconnecté");
 
             myCustomTaskPaneSkyNet.DockPosition = Office.MsoCTPDockPosition.msoCTPDockPositionFloating;
             myCustomTaskPaneSkyNet.Height = height + FloatingCTPOverlapForHeight;
@@ -104,8 +104,7 @@ namespace ExcelAddInExpBD123 {
 
         #endregion
 
-        //Méthode pour empêcher le redimensionnement
-        //Méthode pour empêcher le redimensionnement
+        //Méthode pour empêcher le redimensionnement, inspiré de : https://social.msdn.microsoft.com/Forums/vstudio/en-US/c8a633b8-f595-407f-a3d8-84ee10ee661e/how-to-set-a-minimum-height-for-a-custom-task-pane?forum=vsto
         private void Control_SizeChanged(object sender, EventArgs e) {
 
             var userControl = sender as System.Windows.Forms.UserControl;
